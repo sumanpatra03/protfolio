@@ -29,7 +29,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="bg-black text-white py-16 px-6 md:px-20">
+    <section id="service" className="bg-black text-white py-16 px-6 md:px-20">
       <div className="max-w-5xl mx-auto">
         {/* Heading */}
         <h2 className="text-2xl md:text-3xl  font-extrabold mb-4">
@@ -64,7 +64,6 @@ const Services = () => {
 
               {/* Arrow with Hover Effect */}
               <motion.div
-              
                 initial={{ rotate: -45 }}
                 whileHover={{ rotate: 0 }}
                 transition={{ duration: 0.3 }}

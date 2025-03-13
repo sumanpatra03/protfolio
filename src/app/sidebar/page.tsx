@@ -9,10 +9,10 @@ import Link from "next/link";
 
 const navItems = [
   { name: "Home", icon: <FaHome />, link: "/" },
-  { name: "About", icon: <FaUser />, link: "about" },
-  { name: "Skills", icon: <FaCode />, link: "/skillsection" },
-  { name: "Services", icon: <FaCogs />, link: "/service" },
-  { name: "Portfolio", icon: <FaBriefcase />, link: "/portfolio" },
+  { name: "About", icon: <FaUser />, link: "#about" },
+  { name: "Skills", icon: <FaCode />, link: "#skillsection" },
+  { name: "Services", icon: <FaCogs />, link: "#service" },
+  { name: "Portfolio", icon: <FaBriefcase />, link: "#portfolio" },
   
   { name: "Contact", icon: <FaPhone />, link: "#contact" },
 ];
@@ -81,10 +81,11 @@ const Sidebar = () => {
         <nav className="mt-6 w-full">
           <ul className="space-y-5 text-center text-white text-lg">
             {navItems.map((item, index) => (
+              
               <li key={index} className="hover:text-green-400 cursor-pointer flex items-center justify-center gap-2">
-                <Link href={item.link} className="underline decoration-gray-500 flex items-center gap-2">
+                <a href={item.link} className="underline decoration-gray-500 flex items-center gap-2">
                   {item.icon} {item.name}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

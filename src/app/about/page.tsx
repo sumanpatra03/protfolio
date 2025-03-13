@@ -2,8 +2,8 @@ import React from "react";
 
 const AboutMe = () => {
   return (
-    <section className="  bg-black text-white py-12 px-6 md:px-16" id="about" >
-      <div className="max-w-3xl mx-auto mt-5">
+    <section className="  bg-black text-white py-10 px-4 md:px-16" id="about" >
+      <div className="max-w-3xl ml-25  mt-5">
         {/* Title */}
         <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me.</h2>
         <hr className="border-white mb-6 border-b-[3px]" />

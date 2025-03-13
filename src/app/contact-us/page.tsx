@@ -43,16 +43,19 @@ const ContactForm = () => {
   //   };
 
   return (
-    <section className="bg-black text-white py-16 px-6 md:px-20">
+    <section className="bg-black text-white py-16 px-6 md:px-20" id="contact">
         <div className="max-w-5xl mx-auto">
+        <div >
         <h2 className="text-2xl md:text-3xl font-extrabold mb-4">
         Get In Touch.
       </h2>
-      <hr className="border-white mb-6 border-b-[3px]" />
-      <p className="text-white mb-6 text-2xl">TAKE A COFFEE & CHAT WITH ME</p>
+        </div>
+      <hr className="border-white mb-6 border-b-[3px] " />
+      {/* <p className="text-white mb-6 text-2xl">TAKE A COFFEE & CHAT WITH ME</p> */}
 
       {/* Contact Info */}
-      <div className="flex flex-col items-center">
+      
+      <div className="flex  flex-col " style={{marginTop:"50px "}}>
         <div className="mb-6 w-full max-w-md">
           <div className="flex items-center bg-gray-900 p-4 rounded-lg mb-2">
             <div className="bg-purple-500 p-3 rounded-lg">
@@ -115,13 +118,14 @@ const ContactForm = () => {
             Submit Now
           </button>
         </form>
-      </div>
         </div>
+      </div>
+        
       
 
       {/* Status Message */}
       {/* {status && <p className="mt-4 text-sm text-gray-300">{status}</p>} */}
-      <footer className="bg-black text-white py-6 text-center">
+      <footer className="bg-black text-white py-6 text-center mt-7">
         <p className="text-gray-400 text-sm">
           © {currentYear} | All rights reserved by{" "}
           <span className="text-white font-semibold">Suman Patra</span>

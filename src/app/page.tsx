@@ -13,9 +13,7 @@ export default function Home() {
     <div className="flex bg-black">
       
       <  Sidebar />
-
-      {/* Main Content (Scrollable) */}
-      <div className="flex-1  h-screen lg:pl-52 " >
+      <div className="flex-1  h-screen lg:pl-52" >
         <HeroSection />
         <AboutMe />
         <EducationExperience/>
