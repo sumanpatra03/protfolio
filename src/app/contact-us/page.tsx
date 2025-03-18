@@ -2,11 +2,22 @@
 
 // import React, { useState } from "react";
 
+import Head from "next/head";
 import { FiMail } from "react-icons/fi";
 import { RiCellphoneFill } from "react-icons/ri";
 // import emailjs from "@emailjs/browser";
 
 const ContactForm = () => {
+
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Suman Patra",
+    "description": "Get in touch with Suman Patra for collaboration, project inquiries, or front-end development services."
+  };
+
+
+
   const currentYear = new Date().getFullYear();
   //   const [formData, setFormData] = useState({
   //     name: "",
@@ -43,6 +54,15 @@ const ContactForm = () => {
   //   };
 
   return (
+    <>
+    <Head>
+        <title>Contact Me | Suman&apos;s Portfolio</title>
+        <meta name="description" content="Contact Suman Patra for web development projects, UI/UX designs, or Next.js solutions." />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+        />
+      </Head>
     <section className="bg-black text-white py-16 px-6 md:px-20" id="contact">
         <div className="max-w-5xl mx-auto">
         <div >
@@ -132,6 +152,7 @@ const ContactForm = () => {
         </p>
       </footer>
     </section>
+    </>
   );
 };
 

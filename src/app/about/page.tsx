@@ -2,13 +2,24 @@ import Head from "next/head";
 import React from "react";
 
 const AboutMe = () => {
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Suman Patra",
+    description:
+      "Learn more about Suman Patra, a Frontend Developer specializing in Next.js, React, and modern web technologies.",
+  };
   return (
     <>
       <Head>
-        <title>About Me | Suman Patra</title>
+        <title>About Me | Suman&apos;s Portfolio</title>
         <meta
           name="description"
-          content="Learn more about Suman Patra, a passionate Frontend Developer with experience in modern web technologies."
+          content="Discover Suman Patra's journey as a Frontend Developer and his technical expertise in modern web technologies."
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
         />
       </Head>
 

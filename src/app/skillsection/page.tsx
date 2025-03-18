@@ -1,5 +1,6 @@
 "use client";
 
+import Head from "next/head";
 import React from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -28,55 +29,100 @@ const techStack = [
 ];
 
 const SkillsSection = () => {
+  const skillsSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalCredential",
+    name: "Web Development Skills",
+    competencyRequired: [
+      "C++ for DSA",
+      "JavaScript for Development",
+      "TypeScript for Web",
+      "JavaScript (OOPs) Concepts",
+    ],
+    credentialCategory: "Software Development",
+    provider: {
+      "@type": "Person",
+      name: "Suman Patra",
+    },
+  };
   return (
-    <section id="skillsection" className="bg-black text-white py-16 px-6 md:px-20">
-      <div className="max-w-5xl mx-auto">
-        {/* Coding Skills */}
-        <h3 className="text-2xl md:text-3xl font-extrabold mb-6">
-          Coding Skills.
-        </h3>
-        <hr className=" border-b-[3px] text-white mb-10"></hr>
+    <>
+      <Head>
+        <title>Skills & Tech Stack | Suman Patra</title>
+        <meta
+          name="description"
+          content="Explore my coding skills in C++, JavaScript, and TypeScript, along with expertise in React.js, Next.js, Tailwind CSS, and more."
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Skills & Tech Stack | Suman Patra" />
+        <meta
+          property="og:description"
+          content="Showcasing my coding skills and technical expertise in web development, including JavaScript, React.js, Next.js, and other modern technologies."
+        />
+        {/* <meta property="og:image" content="/skills-thumbnail.png" /> */}
+        <meta
+          property="og:url"
+          content="https://sumanprotfolio.vercel.app/#skillsection"
+        />
+        <meta property="og:type" content="website" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-center items-center">
-          {skills.map((skill, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <div className="w-24 h-24 md:w-28 md:h-28">
-                <CircularProgressbar
-                  value={skill.percentage}
-                  text={`${skill.percentage}%`}
-                  styles={buildStyles({
-                    textColor: "#fff",
-                    pathColor: skill.color,
-                    trailColor: "#222",
-                    textSize: "18px",
-                  })}
-                />
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(skillsSchema) }}
+        />
+      </Head>
+      <section
+        id="skillsection"
+        className="bg-black text-white py-16 px-6 md:px-20"
+      >
+        <div className="max-w-5xl mx-auto">
+          {/* Coding Skills */}
+          <h3 className="text-2xl md:text-3xl font-extrabold mb-6">
+            Coding Skills.
+          </h3>
+          <hr className=" border-b-[3px] text-white mb-10"></hr>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-center items-center">
+            {skills.map((skill, index) => (
+              <div key={index} className="flex flex-col items-center">
+                <div className="w-24 h-24 md:w-28 md:h-28">
+                  <CircularProgressbar
+                    value={skill.percentage}
+                    text={`${skill.percentage}%`}
+                    styles={buildStyles({
+                      textColor: "#fff",
+                      pathColor: skill.color,
+                      trailColor: "#222",
+                      textSize: "18px",
+                    })}
+                  />
+                </div>
+                <p className="text-xl font-semibold mt-3">{skill.name}</p>
+                <p className="text-sm text-gray-400">{skill.label}</p>
               </div>
-              <p className="text-xl font-semibold mt-3">{skill.name}</p>
-              <p className="text-sm text-gray-400">{skill.label}</p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-       
-        <h2 className="text-2xl md:text-3xl  font-extrabold mt-16 mb-6">
-          Tech Stack.
-        </h2>
-        <hr className=" border-b-[3px] text-white mb-10"></hr>
+          <h2 className="text-2xl md:text-3xl  font-extrabold mt-16 mb-6">
+            Tech Stack.
+          </h2>
+          <hr className=" border-b-[3px] text-white mb-10"></hr>
 
-        <div className="flex flex-wrap gap-4 justify-center">
-          {techStack.map((tech, index) => (
-            <div
-              key={index}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full ${tech.color} text-white text-lg font-semibold hover:scale-105 transition-all`}
-            >
-              {tech.icon}
-              {tech.name}
-            </div>
-          ))}
+          <div className="flex flex-wrap gap-4 justify-center">
+            {techStack.map((tech, index) => (
+              <div
+                key={index}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full ${tech.color} text-white text-lg font-semibold hover:scale-105 transition-all`}
+              >
+                {tech.icon}
+                {tech.name}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
