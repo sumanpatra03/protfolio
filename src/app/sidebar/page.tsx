@@ -3,7 +3,19 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes, FaHome, FaUser, FaCode, FaCogs, FaBriefcase,  FaPhone } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaBars,
+  FaTimes,
+  FaHome,
+  FaUser,
+  FaCode,
+  FaCogs,
+  FaBriefcase,
+  FaPhone,
+} from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 import Link from "next/link";
 
@@ -13,7 +25,7 @@ const navItems = [
   { name: "Skills", icon: <FaCode />, link: "#skillsection" },
   { name: "Services", icon: <FaCogs />, link: "#service" },
   { name: "Portfolio", icon: <FaBriefcase />, link: "#portfolio" },
-  
+
   { name: "Contact", icon: <FaPhone />, link: "#contact" },
 ];
 
@@ -32,13 +44,12 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <aside
-      style={{position:"fixed", zIndex:"500"}}
+        style={{ position: "fixed", zIndex: "500" }}
         className={` top-0 left-0 h-screen bg-gray-900 p-8 flex flex-col items-center 
           transform ${isOpen ? "translate-x-0" : "-translate-x-full"} 
           transition-transform duration-300 ease-in-out 
           w-4/5 sm:w-3/5 md:w-1/3 lg:w-1/4 xl:w-1/5 md:translate-x-0 md:relative md:flex`}
       >
-        
         <div className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-gray-500">
           <Image
             src="/suman-profile.png"
@@ -64,7 +75,7 @@ const Sidebar = () => {
           />
         </span>
 
-        {/* Social Icons with Links */}
+    
         <div className="flex space-x-6 mt-5">
           <Link href="mailto:sumanpatra32003@gmail.com" target="_blank">
             <FaEnvelope className="text-2xl text-white cursor-pointer hover:text-red-400 transition" />
@@ -77,13 +88,17 @@ const Sidebar = () => {
           </Link>
         </div>
 
-        {/* Navigation */}
         <nav className="mt-6 w-full">
           <ul className="space-y-5 text-center text-white text-lg">
             {navItems.map((item, index) => (
-              
-              <li key={index} className="hover:text-green-400 cursor-pointer flex items-center justify-center gap-2">
-                <a href={item.link} className="underline decoration-gray-500 flex items-center gap-2">
+              <li
+                key={index}
+                className="hover:text-green-400 cursor-pointer flex items-center justify-center gap-2"
+              >
+                <a
+                  href={item.link}
+                  className="underline decoration-gray-500 flex items-center gap-2"
+                >
                   {item.icon} {item.name}
                 </a>
               </li>
