@@ -20,8 +20,8 @@ const HeroSection = () => {
               loop={0}
               cursor
               cursorStyle="|"
-              typeSpeed={170}
-              deleteSpeed={170}
+              typeSpeed={176}
+              deleteSpeed={176}
               delaySpeed={2000}
             />
           </span>
@@ -46,34 +46,23 @@ const HeroSection = () => {
 
         {/* Right Image Section */}
         <div className="relative mt-10 md:mt-0 md:ml-10">
-          {/* <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-            className="absolute top-[-20px] left-[-20px] z-10 w-10 h-10 md:w-16 md:h-16"
-          >
-            <Image
-              src="/rotate-img2.png"
-              width={50}
-              height={50}
-              objectFit="contain"
-              alt="Badge"
-            />
-          </motion.div> */}
-
           <div className="relative w-48 h-48 md:w-64 md:h-64 bg-gray-900 rounded-lg overflow-hidden border-4 border-gray-600">
-            <Image src="/suman1.png" layout="fill" objectFit="cover" alt="Profile" />
+            <Image
+              src="/suman-profile.png"
+              fill
+              objectFit="cover"
+              alt="Suman Patra - Frontend Developer"
+            />
           </div>
 
           <motion.div
             animate={{ rotate: -360 }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                        className="absolute top-[-30px] left-[-30px] md:top-[-50px] md:left-[-50px] w-10 h-10 md:w-20 md:h-20"
+            className="absolute top-[-30px] left-[-30px] md:top-[-50px] md:left-[-50px] w-10 h-10 md:w-20 md:h-20"
           >
             <Image
               src="/rotate-img.png"
-              // width={70}
-              // height={70}
-              layout="fill"
+              fill
               objectFit="contain"
               alt="Cursor"
             />

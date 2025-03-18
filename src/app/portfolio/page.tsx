@@ -22,7 +22,7 @@ const projects: Project[] = [
     id: 1,
     title: "NatureScape",
     description: "Explore The Nature",
-    image: "/Untitled design.png",
+    image: "/natureScape.png",
     // dialogImage: "/dialog-image.png",
     details:
       " This project is a web application built using React and MUI. It provides a platform for users to explore various nature spots, including forests, lakes, and hiking trails.",
@@ -105,6 +105,7 @@ const Portfolio = () => {
                   width={700}
                   height={700}
                   className="rounded-lg"
+                  
                 />
                 <div className="absolute inset-0 bg-red-500 opacity-0 hover:opacity-50 transition-opacity rounded-lg flex items-center justify-center">
                   <h3 className="text-white text-2xl font-bold">
@@ -125,22 +126,21 @@ const Portfolio = () => {
         <Dialog
           open={isOpen}
           onClose={() => setIsOpen(false)}
-          className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/30"
+          className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/30 p-4"
         >
-          <div className="bg-[#1e1e1e] p-6 rounded-lg max-w-4xl w-full flex">
+          <div className="bg-[#1e1e1e] p-6 rounded-lg w-full max-w-4xl flex flex-col md:flex-row gap-6 max-h-[90vh] overflow-y-auto">
             {selectedProject && (
               <>
                 <Image
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  width={400}
-                  height={400}
-                  objectFit="content"
-                  className="rounded-lg mb-4 mr-4"
+                  width={350}
+                  height={350}
+                  className="rounded-lg w-full max-w-[350px] object-cover mx-auto"
                 />
 
-                <div>
-                  <h3 className="text-3xl font-bold mb-2">
+                <div className="flex-1">
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-2">
                     {selectedProject.title}
                   </h3>
 
@@ -148,14 +148,6 @@ const Portfolio = () => {
                     {selectedProject.details}
                   </p>
 
-                  <a
-                    // href={selectedProject.liveSite}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 underline block mb-4"
-                  >
-                    {/* {selectedProject.liveSite} */}
-                  </a>
                   <div className="mb-4">
                     <h4 className="text-xl font-bold">Key Features:</h4>
                     <ul className="list-disc pl-5 text-gray-400">
@@ -164,9 +156,11 @@ const Portfolio = () => {
                       ))}
                     </ul>
                   </div>
+
                   <p className="text-gray-400 mb-4">
                     Technologies: {selectedProject.technologies}
                   </p>
+
                   <a
                     href={selectedProject.github}
                     target="_blank"
@@ -175,6 +169,7 @@ const Portfolio = () => {
                   >
                     GitHub Repository
                   </a>
+
                   <button
                     onClick={() => setIsOpen(false)}
                     className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 w-full"
