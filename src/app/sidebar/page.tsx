@@ -41,7 +41,7 @@ const Sidebar = () => {
         
         <div className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-gray-500">
           <Image
-            src="/suman1.png"
+            src="/suman-profile.png"
             width={176}
             height={176}
             alt="Profile"
