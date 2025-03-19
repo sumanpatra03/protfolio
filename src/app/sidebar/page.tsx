@@ -20,7 +20,7 @@ import { Typewriter } from "react-simple-typewriter";
 import Link from "next/link";
 
 const navItems = [
-  { name: "Home", icon: <FaHome />, link: "/" },
+  { name: "Home", icon: <FaHome />, link: "#" },
   { name: "About", icon: <FaUser />, link: "#about" },
   { name: "Skills", icon: <FaCode />, link: "#skillsection" },
   { name: "Services", icon: <FaCogs />, link: "#service" },
