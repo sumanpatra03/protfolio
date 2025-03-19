@@ -34,7 +34,7 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* Mobile Toggle Button */}
+     
       <button
         className="md:hidden fixed top-4 left-4 text-white text-3xl z-501"
         onClick={() => setIsOpen(!isOpen)}
@@ -42,7 +42,7 @@ const Sidebar = () => {
         {isOpen ? <FaTimes /> : <FaBars />}
       </button>
 
-      {/* Sidebar */}
+      
       <aside
         style={{ position: "fixed", zIndex: "500" }}
         className={` top-0 left-0 h-screen bg-gray-900 p-8 flex flex-col items-center 
@@ -107,7 +107,6 @@ const Sidebar = () => {
         </nav>
       </aside>
 
-      {/* Background Overlay (for mobile) */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black opacity-50 z-40 md:hidden"

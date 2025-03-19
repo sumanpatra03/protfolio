@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Dialog } from "@headlessui/react";
-import Head from "next/head";
+
 
 interface Project {
   id: number;
@@ -78,16 +78,7 @@ const projects: Project[] = [
   },
 ];
 
-const portfolioSchema = {
-  "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  name: "Portfolio Projects",
-  author: {
-    "@type": "Person",
-    name: "Suman Patra",
-  },
-  description: "Explore innovative web development projects by Suman Patra.",
-};
+
 
 const Portfolio = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -100,12 +91,7 @@ const Portfolio = () => {
 
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioSchema) }}
-        />
-      </Head>
+      
       <section
         className="bg-black text-white py-16 px-6 md:px-20"
         id="portfolio"

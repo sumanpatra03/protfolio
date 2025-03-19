@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Suman Patra | Frontend Developer & React Expert",
+  title: "Suman's Portfolio",
   description:
     "Explore Suman Patra's portfolio showcasing front-end development projects, React apps, and UI/UX designs. Specializing in Next.js, TypeScript, Bootstrap, and Tailwind CSS.",
   keywords: [
@@ -84,7 +84,7 @@ export default function RootLayout({
           }}
         />
 
-        {/* Structured Data - Breadcrumb */}
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
