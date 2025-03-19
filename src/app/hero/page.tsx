@@ -20,8 +20,8 @@ const HeroSection = () => {
               loop={0}
               cursor
               cursorStyle="|"
-              typeSpeed={176}
-              deleteSpeed={176}
+              typeSpeed={170}
+              deleteSpeed={170}
               delaySpeed={2000}
             />
           </span>
