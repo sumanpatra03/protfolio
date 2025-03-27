@@ -3,9 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Dialog } from "@headlessui/react";
-// import { groq } from "next-sanity";
+;
 import { client } from "@/sanity/lib/client";
-
 
 interface Project {
   id: number;
@@ -20,65 +19,6 @@ interface Project {
   github: string;
 }
 
-// const projects: Project[] = [
-//   {
-//     id: 1,
-//     title: "NatureScape",
-//     description: "Explore The Nature",
-//     image: "/natureScape.png",
-//     // dialogImage: "/dialog-image.png",
-//     details:
-//       " This project is a web application built using React and MUI. It provides a platform for users to explore various nature spots, including forests, lakes, and hiking trails.",
-//     // liveSite: "https://oneutil.onrender.com",
-//     features: [
-//       "Interactive Map: Users can browse and discover nature spots with detailed information.",
-//       "Photo Gallery: Stunning images showcase each location's beauty.",
-//       "User Reviews: Visitors can leave reviews and share experiences.",
-//       "Filtering: Filter locations based on type, difficulty, and distance.",
-//       "Bookmarking: Users can save their favorite spots for later.",
-//     ],
-//     github: "https://github.com/sumanpatra03/NatureScape",
-//     technologies: ["React.js, ", "MUI "],
-//   },
-//   {
-//     id: 2,
-//     title: "BookCenter",
-//     description: "Book Review Platform",
-//     image: "/bookcenter.png",
-//     // dialogImage: "/bookcenter-dialog-image.png",
-//     details:
-//       "BookCenter is a web application designed for book enthusiasts. It offers a platform for users to browse, review, and manage their favorite books with ease.",
-//     // liveSite: "https://bookcenter.onrender.com",
-//     features: [
-//       "Book Reviews: Users can write, edit, and share reviews on their favorite books.",
-//       "Rating System: Allows users to rate books and view average ratings.",
-//       "Search and Filter: Easily find books by title, author, or genre.",
-//       "User Profiles: Personalized profiles displaying user reviews and ratings.",
-//       "Wishlist: Users can create a wishlist of books they want to read.",
-//     ],
-//     github: "https://github.com/sumanpatra03/BookCenter",
-//     technologies: ["React.js, ", "JSON Server, ", "react-bootstrap "],
-//   },
-//   {
-//     id: 3,
-//     title: "MunchBox",
-//     description: "E-commerce Snack Store",
-//     image: "/MunchBox.png",
-//     // dialogImage: "/munchbox-dialog-image.png",
-//     details:
-//       "MunchBox is a web application built using React, MUI, and Redux. It offers a seamless shopping experience for users looking to explore and purchase snacks.",
-//     // liveSite: "https://munchbox.onrender.com",
-//     features: [
-//       "Product Catalog: Users can browse a wide variety of snacks with detailed descriptions and images.",
-//       "Cart Management: Users can add, update, and remove items from their cart.",
-//       "Order Summary: Displays item details, quantities, and total cost.",
-//       "User Reviews: Allows customers to share their feedback on products.",
-//       "Contact Form: Provides an easy way for users to get in touch with the team.",
-//     ],
-//     github: "https://github.com/sumanpatra03/-MunchBox",
-//     technologies: ["React.js, ", "MUI, ", "Redux, ", "JSON Server, "],
-//   },
-// ];
 
 const Portfolio = () => {
   const [myPortfolio, setPofolio] = useState<Project[]>([]);
@@ -90,7 +30,7 @@ const Portfolio = () => {
     setIsOpen(true);
   };
 
-  async function fetchBlog() {
+  async function fetchPortfolio() {
     try {
       const query = `*[_type=="portfolio"]{title,description,'image':image.asset->url
       ,details,features,technologies,github}`;
@@ -103,7 +43,7 @@ const Portfolio = () => {
   }
 
   useEffect(() => {
-    fetchBlog();
+    fetchPortfolio();
   }, []);
 
   return (
