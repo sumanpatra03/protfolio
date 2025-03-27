@@ -66,8 +66,12 @@ const TimelineElement = ({
     icon={isEducation ? <FaGraduationCap /> : <FaBriefcase />}
   >
     <h3 className="text-lg font-bold">{item.title}</h3>
-    <h4 className="text-sm text-gray-400">{(item as EducationItem).institute || (item as ExperienceItem).company}</h4>
-    {item.details && <p className="text-sm text-gray-300 mt-1">{item.details}</p>}
+    <h4 className="text-sm text-gray-400">
+      {(item as EducationItem).institute || (item as ExperienceItem).company}
+    </h4>
+    {item.details && (
+      <p className="text-sm text-gray-300 mt-1">{item.details}</p>
+    )}
   </VerticalTimelineElement>
 );
 

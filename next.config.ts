@@ -1,6 +1,9 @@
 import { withSentryConfig } from "@sentry/nextjs";
 
 const nextConfig = {
+  images: {
+    domains: ["cdn.sanity.io"], 
+  }
   // Your existing Next.js configuration
 };
 

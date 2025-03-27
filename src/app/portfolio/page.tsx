@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Dialog } from "@headlessui/react";
+// import { groq } from "next-sanity";
+import { client } from "@/sanity/lib/client";
 
 
 interface Project {
@@ -18,69 +20,68 @@ interface Project {
   github: string;
 }
 
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "NatureScape",
-    description: "Explore The Nature",
-    image: "/natureScape.png",
-    // dialogImage: "/dialog-image.png",
-    details:
-      " This project is a web application built using React and MUI. It provides a platform for users to explore various nature spots, including forests, lakes, and hiking trails.",
-    // liveSite: "https://oneutil.onrender.com",
-    features: [
-      "Interactive Map: Users can browse and discover nature spots with detailed information.",
-      "Photo Gallery: Stunning images showcase each location's beauty.",
-      "User Reviews: Visitors can leave reviews and share experiences.",
-      "Filtering: Filter locations based on type, difficulty, and distance.",
-      "Bookmarking: Users can save their favorite spots for later.",
-    ],
-    github: "https://github.com/username/oneutil",
-    technologies: ["React.js, ", "MUI "],
-  },
-  {
-    id: 2,
-    title: "BookCenter",
-    description: "Book Review Platform",
-    image: "/bookcenter.png",
-    // dialogImage: "/bookcenter-dialog-image.png",
-    details:
-      "BookCenter is a web application designed for book enthusiasts. It offers a platform for users to browse, review, and manage their favorite books with ease.",
-    // liveSite: "https://bookcenter.onrender.com",
-    features: [
-      "Book Reviews: Users can write, edit, and share reviews on their favorite books.",
-      "Rating System: Allows users to rate books and view average ratings.",
-      "Search and Filter: Easily find books by title, author, or genre.",
-      "User Profiles: Personalized profiles displaying user reviews and ratings.",
-      "Wishlist: Users can create a wishlist of books they want to read.",
-    ],
-    github: "https://github.com/username/bookcenter",
-    technologies: ["React.js, ", "MUI, ", "JSON Server, ", "react-bootstrap "],
-  },
-  {
-    id: 3,
-    title: "MunchBox",
-    description: "E-commerce Snack Store",
-    image: "/MunchBox.png",
-    // dialogImage: "/munchbox-dialog-image.png",
-    details:
-      "MunchBox is a web application built using React, MUI, and Redux. It offers a seamless shopping experience for users looking to explore and purchase snacks.",
-    // liveSite: "https://munchbox.onrender.com",
-    features: [
-      "Product Catalog: Users can browse a wide variety of snacks with detailed descriptions and images.",
-      "Cart Management: Users can add, update, and remove items from their cart.",
-      "Order Summary: Displays item details, quantities, and total cost.",
-      "User Reviews: Allows customers to share their feedback on products.",
-      "Contact Form: Provides an easy way for users to get in touch with the team.",
-    ],
-    github: "https://github.com/username/munchbox",
-    technologies: ["React.js, ", "MUI, ", "Redux, ", "JSON Server, "],
-  },
-];
-
-
+// const projects: Project[] = [
+//   {
+//     id: 1,
+//     title: "NatureScape",
+//     description: "Explore The Nature",
+//     image: "/natureScape.png",
+//     // dialogImage: "/dialog-image.png",
+//     details:
+//       " This project is a web application built using React and MUI. It provides a platform for users to explore various nature spots, including forests, lakes, and hiking trails.",
+//     // liveSite: "https://oneutil.onrender.com",
+//     features: [
+//       "Interactive Map: Users can browse and discover nature spots with detailed information.",
+//       "Photo Gallery: Stunning images showcase each location's beauty.",
+//       "User Reviews: Visitors can leave reviews and share experiences.",
+//       "Filtering: Filter locations based on type, difficulty, and distance.",
+//       "Bookmarking: Users can save their favorite spots for later.",
+//     ],
+//     github: "https://github.com/sumanpatra03/NatureScape",
+//     technologies: ["React.js, ", "MUI "],
+//   },
+//   {
+//     id: 2,
+//     title: "BookCenter",
+//     description: "Book Review Platform",
+//     image: "/bookcenter.png",
+//     // dialogImage: "/bookcenter-dialog-image.png",
+//     details:
+//       "BookCenter is a web application designed for book enthusiasts. It offers a platform for users to browse, review, and manage their favorite books with ease.",
+//     // liveSite: "https://bookcenter.onrender.com",
+//     features: [
+//       "Book Reviews: Users can write, edit, and share reviews on their favorite books.",
+//       "Rating System: Allows users to rate books and view average ratings.",
+//       "Search and Filter: Easily find books by title, author, or genre.",
+//       "User Profiles: Personalized profiles displaying user reviews and ratings.",
+//       "Wishlist: Users can create a wishlist of books they want to read.",
+//     ],
+//     github: "https://github.com/sumanpatra03/BookCenter",
+//     technologies: ["React.js, ", "JSON Server, ", "react-bootstrap "],
+//   },
+//   {
+//     id: 3,
+//     title: "MunchBox",
+//     description: "E-commerce Snack Store",
+//     image: "/MunchBox.png",
+//     // dialogImage: "/munchbox-dialog-image.png",
+//     details:
+//       "MunchBox is a web application built using React, MUI, and Redux. It offers a seamless shopping experience for users looking to explore and purchase snacks.",
+//     // liveSite: "https://munchbox.onrender.com",
+//     features: [
+//       "Product Catalog: Users can browse a wide variety of snacks with detailed descriptions and images.",
+//       "Cart Management: Users can add, update, and remove items from their cart.",
+//       "Order Summary: Displays item details, quantities, and total cost.",
+//       "User Reviews: Allows customers to share their feedback on products.",
+//       "Contact Form: Provides an easy way for users to get in touch with the team.",
+//     ],
+//     github: "https://github.com/sumanpatra03/-MunchBox",
+//     technologies: ["React.js, ", "MUI, ", "Redux, ", "JSON Server, "],
+//   },
+// ];
 
 const Portfolio = () => {
+  const [myPortfolio, setPofolio] = useState<Project[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -89,9 +90,24 @@ const Portfolio = () => {
     setIsOpen(true);
   };
 
+  async function fetchBlog() {
+    try {
+      const query = `*[_type=="portfolio"]{title,description,'image':image.asset->url
+      ,details,features,technologies,github}`;
+      const data = await client.fetch(query);
+      setPofolio(data);
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchBlog();
+  }, []);
+
   return (
     <>
-      
       <section
         className="bg-black text-white py-16 px-6 md:px-20"
         id="portfolio"
@@ -102,20 +118,26 @@ const Portfolio = () => {
           </h2>
           <hr className="border-b-[3px] text-white mb-8" />
           <div className="grid md:grid-cols-3 gap-8">
-            {projects.map((project) => (
+            {myPortfolio.map((project) => (
               <div
-                key={project.id}
+                key={project.title}
                 className="bg-[#1e1e1e] p-4 rounded-xl cursor-pointer hover:scale-105 transition relative"
                 onClick={() => openModal(project)}
               >
                 <div className="relative">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={700}
-                    height={700}
-                    className="rounded-lg"
-                  />
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={700}
+                      height={700}
+                      className="rounded-lg"
+                    />
+                  ) : (
+                    <div className="w-full h-[200px] bg-gray-800 rounded-lg flex items-center justify-center text-gray-400">
+                      No Image Available
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-red-500 opacity-0 hover:opacity-50 transition-opacity rounded-lg flex items-center justify-center">
                     <h3 className="text-white text-2xl font-bold">
                       {project.title}
@@ -140,13 +162,15 @@ const Portfolio = () => {
             <div className="bg-[#1e1e1e] p-6 rounded-lg w-full max-w-4xl flex flex-col md:flex-row gap-6 max-h-[90vh] overflow-y-auto">
               {selectedProject && (
                 <>
-                  <Image
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    width={350}
-                    height={350}
-                    className="rounded-lg w-full max-w-[350px] object-cover mx-auto"
-                  />
+                  {selectedProject.image ? (
+                    <Image
+                      src={selectedProject.image}
+                      alt={selectedProject.title}
+                      width={350}
+                      height={350}
+                      className="rounded-lg w-full max-w-[350px] object-cover mx-auto"
+                    />
+                  ) : null}
 
                   <div className="flex-1">
                     <h3 className="text-2xl sm:text-3xl font-bold mb-2">
