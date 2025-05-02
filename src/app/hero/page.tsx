@@ -9,7 +9,6 @@ const HeroSection = () => {
   return (
     <div className="" id="#">
       <section className="relative w-full min-h-screen bg-black flex flex-col md:flex-row items-center justify-center px-6 md:px-20">
-        {/* Left Content */}
         <div className="text-white text-center md:text-left max-w-lg space-y-4">
           <h1 className="text-4xl md:text-7xl font-bold">
             Suman <span className="text-gray-300">Patra</span>
@@ -44,14 +43,14 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Right Image Section */}
         <div className="relative mt-10 md:mt-0 md:ml-10">
           <div className="relative w-48 h-48 md:w-64 md:h-64 bg-gray-900 rounded-lg overflow-hidden border-4 border-gray-600">
             <Image
-              src="/suman-profile.png"
+              src="/Suman_img.png"
               fill
               objectFit="cover"
               alt="Suman Patra - Frontend Developer"
+              className="mt-2"
             />
           </div>
 

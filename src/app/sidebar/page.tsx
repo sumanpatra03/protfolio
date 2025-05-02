@@ -52,7 +52,7 @@ const Sidebar = () => {
       >
         <div className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-gray-500">
           <Image
-            src="/suman-profile.png"
+            src="/Suman_img.png"
             width={176}
             height={176}
             alt="Profile"
@@ -97,7 +97,7 @@ const Sidebar = () => {
               >
                 <a
                   href={item.link}
-                  className="underline decoration-gray-500 flex items-center gap-2"
+                  className=" decoration-gray-500 flex items-center gap-2"
                 >
                   {item.icon} {item.name}
                 </a>
