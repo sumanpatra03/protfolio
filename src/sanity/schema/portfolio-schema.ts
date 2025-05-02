@@ -49,5 +49,11 @@ export default defineType({
       type: "url",
       validation: (Rule) => Rule.required().uri({ scheme: ["http", "https"] }),
     }),
+    defineField({
+      name: "liveUrl",
+      title: "Live URL",
+      type: "url",
+      validation: (Rule) => Rule.required().uri({ scheme: ["http", "https"] }),
+    }),
   ],
 });

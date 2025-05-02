@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Dialog } from "@headlessui/react";
-;
 import { client } from "@/sanity/lib/client";
 
 interface Project {
@@ -17,8 +16,8 @@ interface Project {
   features: string[];
   technologies: string[];
   github: string;
+  liveUrl: string;
 }
-
 
 const Portfolio = () => {
   const [myPortfolio, setPofolio] = useState<Project[]>([]);
@@ -33,7 +32,7 @@ const Portfolio = () => {
   async function fetchPortfolio() {
     try {
       const query = `*[_type=="portfolio"]{title,description,'image':image.asset->url
-      ,details,features,technologies,github}`;
+      ,details,features,technologies,github,liveUrl}`;
       const data = await client.fetch(query);
       setPofolio(data);
       console.log(data);
@@ -142,6 +141,16 @@ const Portfolio = () => {
                     >
                       GitHub Repository
                     </a>
+                    {selectedProject.liveUrl && (
+                      <a
+                        href={selectedProject.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 underline mb-4 block"
+                      >
+                        {selectedProject.title}
+                      </a>
+                    )}
 
                     <button
                       onClick={() => setIsOpen(false)}
