@@ -82,9 +82,7 @@ const ContactForm = () => {
                 </div>
                 <div className="ml-4">
                   <p className="text-gray-300 text-sm">Email</p>
-                  <p className="text-white text-sm">
-                    sumanpatra32003@gmail.com
-                  </p>
+                  <p className="text-white text-sm">patrasuman042@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-center bg-gray-900 p-4 rounded-lg">

@@ -26,7 +26,7 @@ const education: EducationItem[] = [
   {
     title: "Frontend Developer",
     institute: "Webskitters Academy",
-    duration: "2024 Nov - Present ",
+    duration: "2024 Nov - 2025 Apr ",
   },
   {
     title: "B.A",
@@ -44,7 +44,7 @@ const experience: ExperienceItem[] = [
   {
     title: "Frontend Developer (Trainee)",
     company: "Webskitters Technology Solutions Pvt. Ltd",
-    duration: "2024 Feb - Present",
+    duration: "2024 Nov - 2025 Apr",
     details:
       "React, Next.js, TypeScript. Developed scalable e-commerce web applications with modern UI.",
   },

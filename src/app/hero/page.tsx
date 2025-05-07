@@ -38,7 +38,9 @@ const HeroSection = () => {
 
             <button className="relative overflow-hidden px-6 py-3 bg-yellow-400 text-black font-semibold rounded-full transition-all duration-300 group">
               <span className="absolute inset-0 bg-red-500 scale-y-0 origin-bottom transition-transform duration-500 group-hover:scale-y-100"></span>
-              <span className="relative z-10">Contact Me</span>
+              <a href="/Resume_Suman_Patra.pdf">
+                <span className="relative z-10">Contact Me</span>
+              </a>
             </button>
           </div>
         </div>
