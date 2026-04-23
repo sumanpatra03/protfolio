@@ -1,32 +1,26 @@
 "use client";
 
-import React from "react";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
 import { FaGraduationCap, FaBriefcase } from "react-icons/fa";
+import { IconType } from "react-icons";
 
 interface EducationItem {
   title: string;
   institute: string;
   duration: string;
-  details?: string;
 }
 
 interface ExperienceItem {
   title: string;
   company: string;
   duration: string;
-  details: string;
+  details?: string;
 }
 
 const education: EducationItem[] = [
   {
     title: "Frontend Developer",
     institute: "Webskitters Academy",
-    duration: "2024 Nov - 2025 Apr ",
+    duration: "2024 - 2025",
   },
   {
     title: "B.A",
@@ -48,58 +42,89 @@ const experience: ExperienceItem[] = [
     details:
       "React, Next.js, TypeScript. Developed scalable e-commerce web applications with modern UI.",
   },
+  {
+    title: "Frontend Developer (Intern)",
+    company: "Wizard Communications Pvt Ltd",
+    duration: "2025 July - Present",
+    details:
+      "React, Next.js, TypeScript. Developed scalable e-commerce web applications with modern UI.",
+  },
 ];
 
-const TimelineElement = ({
-  item,
-  isEducation,
+const TimelineCard = ({
+  icon: Icon,
+  title,
+  subtitle,
+  duration,
+  details,
 }: {
-  item: EducationItem | ExperienceItem;
-  isEducation: boolean;
+  icon: IconType;
+  title: string;
+  subtitle: string;
+  duration: string;
+  details?: string;
 }) => (
-  <VerticalTimelineElement
-    className="vertical-timeline-element--work"
-    contentStyle={{ background: "#1A1A1A", color: "#fff", borderRadius: "8px" }}
-    contentArrowStyle={{ borderRight: "7px solid #FF3D00" }}
-    date={item.duration}
-    iconStyle={{ background: "#FF3D00", color: "#fff" }}
-    icon={isEducation ? <FaGraduationCap /> : <FaBriefcase />}
-  >
-    <h3 className="text-lg font-bold">{item.title}</h3>
-    <h4 className="text-sm text-gray-400">
-      {(item as EducationItem).institute || (item as ExperienceItem).company}
-    </h4>
-    {item.details && (
-      <p className="text-sm text-gray-300 mt-1">{item.details}</p>
-    )}
-  </VerticalTimelineElement>
+  <div className="flex gap-3 sm:gap-4 mb-5 sm:mb-6">
+    <div className="flex flex-col items-center">
+      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#FF3D00] flex items-center justify-center shrink-0">
+        <Icon className="text-white text-sm sm:text-lg" />
+      </div>
+      <div className="w-[2px] bg-[#FF3D00] flex-1 mt-2" />
+    </div>
+    <div className="bg-[#111] border border-[#333] rounded-2xl p-3 sm:p-4 mb-2 flex-1 shadow-[0_4px_12px_rgba(255,61,0,0.25)] min-w-0">
+      <p className="text-xs text-[#FF3D00] mb-1">{duration}</p>
+      <h4 className="text-sm sm:text-base font-semibold leading-snug">{title}</h4>
+      <p className="text-xs sm:text-sm text-gray-400 break-words">{subtitle}</p>
+      {details && (
+        <p className="text-xs sm:text-sm text-gray-300 mt-1 leading-relaxed">{details}</p>
+      )}
+    </div>
+  </div>
 );
 
 const EducationExperience = () => {
   return (
-    <section className="bg-black text-white py-10 px-4 md:px-20 lg:px-40">
-      <h2 className="text-3xl font-bold  mb-8">Education & Experience</h2>
-      <hr className="border-white border-b-[3px] mb-6" />
+    <section
+      id="education"
+      className="bg-black text-white py-10 sm:py-16 px-4 sm:px-8 md:px-20 overflow-x-hidden"
+    >
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-extrabold mb-4 sm:mb-6 text-center">
+          Education & Experience
+        </h2>
+        <hr className="border-b-[3px] text-white mb-8 sm:mb-10 w-24 mx-auto" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div>
-          <h3 className="text-2xl font-semibold mb-4">Education</h3>
-          <VerticalTimeline layout="1-column-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+          <div>
+            <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center text-[#FF3D00]">
+              Education
+            </h3>
             {education.map((item, index) => (
-              <TimelineElement key={index} item={item} isEducation={true} />
+              <TimelineCard
+                key={index}
+                icon={FaGraduationCap}
+                title={item.title}
+                subtitle={item.institute}
+                duration={item.duration}
+              />
             ))}
-          </VerticalTimeline>
-        </div>
+          </div>
 
-        <hr className="border-gray-600 md:hidden my-8" />
-
-        <div>
-          <h3 className="text-2xl font-semibold mb-4">Experience</h3>
-          <VerticalTimeline layout="1-column-right">
+          <div>
+            <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center text-[#FF3D00]">
+              Experience
+            </h3>
             {experience.map((item, index) => (
-              <TimelineElement key={index} item={item} isEducation={false} />
+              <TimelineCard
+                key={index}
+                icon={FaBriefcase}
+                title={item.title}
+                subtitle={item.company}
+                duration={item.duration}
+                details={item.details}
+              />
             ))}
-          </VerticalTimeline>
+          </div>
         </div>
       </div>
     </section>

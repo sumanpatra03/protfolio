@@ -2,7 +2,7 @@ import { withSentryConfig } from "@sentry/nextjs";
 
 const nextConfig = {
   images: {
-    domains: ["cdn.sanity.io"], 
+    remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io" }],
   }
   // Your existing Next.js configuration
 };
@@ -12,10 +12,6 @@ module.exports = withSentryConfig(nextConfig, {
   org: "https://sumanprotfolio.vercel.app/",
   project: "Suman's Portfolio",
 
-  // Only print logs for uploading source maps in CI
-  // Set to `true` to suppress logs
   silent: !process.env.CI,
-
-  // Automatically tree-shake Sentry logger statements to reduce bundle size
-  disableLogger: true,
+  webpack: { treeshake: { removeDebugLogging: true } },
 });

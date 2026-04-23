@@ -1,7 +1,7 @@
 "use client";
 
 import Head from "next/head";
-import React from "react";
+
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { FaReact, FaGitAlt, FaBootstrap } from "react-icons/fa";
@@ -18,6 +18,7 @@ const skills = [
 const techStack = [
   { name: "React JS", icon: <FaReact size={24} />, color: "bg-[#10332D]" },
   { name: "Next.js", icon: <RiNextjsFill size={24} />, color: "bg-[#1E3A5F]" },
+  { name: "React Native", icon: <FaReact size={24} />, color: "bg-[#1E3A5F]" },
   {
     name: "Tailwind CSS",
     icon: <RiTailwindCssFill size={24} />,
@@ -66,7 +67,6 @@ const SkillsSection = () => {
         />
         <meta property="og:type" content="website" />
 
-        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(skillsSchema) }}
@@ -77,7 +77,6 @@ const SkillsSection = () => {
         className="bg-black text-white py-16 px-6 md:px-20"
       >
         <div className="max-w-5xl mx-auto">
-          
           <h3 className="text-2xl md:text-3xl font-extrabold mb-6">
             Coding Skills.
           </h3>
