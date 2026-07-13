@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://sumanprotfolio.vercel.app/',
+    sitemap: 'https://sumanprotfolio.vercel.app/sitemap.xml',
   }
 }

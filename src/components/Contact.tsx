@@ -1,19 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FiMail, FiPhone, FiSend } from "react-icons/fi";
+import { contactSchema } from "@/utils/schemas";
 
 const ContactForm = () => {
-  const contactSchema = {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    name: "Contact Suman Patra",
-    description:
-      "Get in touch with Suman Patra for collaboration, project inquiries, or front-end development services.",
-  };
-
   const currentYear = new Date().getFullYear();
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+
+  const handleFocus = (field: string) => setFocusedField(field);
+  const handleBlur = () => setFocusedField(null);
 
   return (
     <>
@@ -115,8 +113,13 @@ const ContactForm = () => {
               className="lg:col-span-7 bg-zinc-900/30 border border-zinc-800/80 p-6 sm:p-8 rounded-3xl shadow-xl hover:border-zinc-800 transition-all duration-300"
             >
               <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
-                <div>
-                  <label htmlFor="name" className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">
+                <div className="relative">
+                  <label 
+                    htmlFor="name" 
+                    className={`block text-[10px] font-bold uppercase tracking-wider mb-2 transition-colors duration-300 ${
+                      focusedField === "name" ? "text-violet-400" : "text-zinc-400"
+                    }`}
+                  >
                     Name
                   </label>
                   <input
@@ -124,13 +127,22 @@ const ContactForm = () => {
                     name="name"
                     id="name"
                     required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onFocus={() => handleFocus("name")}
+                    onBlur={handleBlur}
                     placeholder="Your Name"
                     className="w-full bg-zinc-950 text-zinc-100 border border-zinc-800/80 rounded-xl px-4 py-3 text-sm placeholder-zinc-600 outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/30 transition-all duration-300"
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">
+                <div className="relative">
+                  <label 
+                    htmlFor="email" 
+                    className={`block text-[10px] font-bold uppercase tracking-wider mb-2 transition-colors duration-300 ${
+                      focusedField === "email" ? "text-violet-400" : "text-zinc-400"
+                    }`}
+                  >
                     Email
                   </label>
                   <input
@@ -138,19 +150,32 @@ const ContactForm = () => {
                     name="email"
                     id="email"
                     required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onFocus={() => handleFocus("email")}
+                    onBlur={handleBlur}
                     placeholder="Your Email Address"
                     className="w-full bg-zinc-950 text-zinc-100 border border-zinc-800/80 rounded-xl px-4 py-3 text-sm placeholder-zinc-600 outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/30 transition-all duration-300"
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">
+                <div className="relative">
+                  <label 
+                    htmlFor="message" 
+                    className={`block text-[10px] font-bold uppercase tracking-wider mb-2 transition-colors duration-300 ${
+                      focusedField === "message" ? "text-violet-400" : "text-zinc-400"
+                    }`}
+                  >
                     Message
                   </label>
                   <textarea
                     name="message"
                     id="message"
                     required
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    onFocus={() => handleFocus("message")}
+                    onBlur={handleBlur}
                     placeholder="Type your message here..."
                     className="w-full bg-zinc-950 text-zinc-100 border border-zinc-800/80 rounded-xl px-4 py-3 text-sm placeholder-zinc-600 outline-none h-32 focus:border-violet-500 focus:ring-1 focus:ring-violet-500/30 transition-all duration-300 resize-none animate-none"
                   />

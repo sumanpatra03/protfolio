@@ -9,6 +9,7 @@ interface EducationItem {
   title: string;
   institute: string;
   duration: string;
+  bullets?: string[];
 }
 
 interface ExperienceItem {
@@ -16,6 +17,7 @@ interface ExperienceItem {
   company: string;
   duration: string;
   details?: string;
+  bullets?: string[];
 }
 
 const educationData: EducationItem[] = [
@@ -23,16 +25,29 @@ const educationData: EducationItem[] = [
     title: "Frontend Developer Course",
     institute: "Webskitters Academy",
     duration: "2024 - 2025",
+    bullets: [
+      "Mastered React, Next.js, and TypeScript fundamentals with strict lint rules.",
+      "Engineered mock e-commerce shopping checkouts and portfolio layouts.",
+      "Learned core DOM manipulation, asynchronous calls, and UI consistency."
+    ]
   },
   {
     title: "B.A. Graduation",
     institute: "Tarakeswar Degree College",
     duration: "2020 - 2023",
+    bullets: [
+      "Graduated with a Bachelor of Arts degree.",
+      "Gained critical communication, project planning, and documentation skills."
+    ]
   },
   {
     title: "Higher Secondary (12th)",
     institute: "Marokhana High School",
     duration: "2018 - 2020",
+    bullets: [
+      "Completed standard senior secondary schooling with a focus on humanities.",
+      "Organized science exhibitions and cultural activities."
+    ]
   },
 ];
 
@@ -42,14 +57,26 @@ const experienceData: ExperienceItem[] = [
     company: "Wizard Communications Pvt Ltd",
     duration: "2025 July - Present",
     details:
-      "Engineering professional cross-platform POS (Point of Sale) mobile applications in React Native. Designed and integrated Role-Based Access Control (RBAC) user permission systems, optimized offline transactions, and structured modular state management via Redux Toolkit.",
+      "Engineering professional cross-platform POS (Point of Sale) mobile applications in React Native.",
+    bullets: [
+      "Designed and integrated strict Role-Based Access Control (RBAC) screen locks (Cashier vs Manager views).",
+      "Optimized offline transactions and persistent store caching using Redux Persist middleware.",
+      "Integrated native barcode scanner camera configurations, reducing scan latency.",
+      "Coordinated with backend API teams to map secure REST endpoints and handle real-time inventory updates."
+    ]
   },
   {
     title: "Frontend Developer (Trainee)",
     company: "Webskitters Technology Solutions Pvt. Ltd",
     duration: "2024 Nov - 2025 Apr",
     details:
-      "Trained in deep front-end methodologies utilizing Next.js, React, and TypeScript. Developed scalable e-commerce shopping panels and custom visual UI modules with strict design consistency.",
+      "Trained in deep front-end methodologies utilizing Next.js, React, and TypeScript.",
+    bullets: [
+      "Built responsive grids and modular structures for large-scale commerce sites.",
+      "Translated visual design specifications (Figma/Adobe XD) into pixel-perfect components using Tailwind CSS.",
+      "Worked with version controls (Git/GitHub) and resolved complex merge conflicts across team branches.",
+      "Improved site load speeds by optimizing Next.js static asset loaders."
+    ]
   },
 ];
 
@@ -59,6 +86,7 @@ const TimelineCard = ({
   subtitle,
   duration,
   details,
+  bullets,
   index,
 }: {
   icon: IconType;
@@ -66,6 +94,7 @@ const TimelineCard = ({
   subtitle: string;
   duration: string;
   details?: string;
+  bullets?: string[];
   index: number;
 }) => (
   <motion.div
@@ -86,7 +115,7 @@ const TimelineCard = ({
     {/* Timeline Card details */}
     <motion.div
       whileHover={{ y: -4 }}
-      className="bg-zinc-900/40 border border-zinc-800/80 rounded-2xl p-5 mb-2 flex-1 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:border-violet-500/30 hover:bg-zinc-900/70 transition-all duration-300 min-w-0"
+      className="bg-zinc-900/30 border border-zinc-800/80 rounded-2xl p-5 mb-2 flex-1 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:border-violet-500/30 hover:bg-zinc-900/60 transition-all duration-300 min-w-0"
     >
       <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
         <span className="inline-flex px-2.5 py-1 rounded-full bg-zinc-950 border border-zinc-800 text-[10px] font-semibold text-violet-400 uppercase tracking-wider">
@@ -97,10 +126,22 @@ const TimelineCard = ({
         {title}
       </h4>
       <p className="text-xs sm:text-sm text-zinc-400 font-medium mt-1">{subtitle}</p>
+      
       {details && (
-        <p className="text-xs sm:text-sm text-zinc-400 mt-3 leading-relaxed border-t border-zinc-800/50 pt-2 font-light">
+        <p className="text-xs sm:text-sm text-zinc-300 mt-3 leading-relaxed border-t border-zinc-800/50 pt-2 font-normal">
           {details}
         </p>
+      )}
+
+      {bullets && bullets.length > 0 && (
+        <ul className="mt-3 space-y-1.5 text-zinc-400 text-xs font-light">
+          {bullets.map((bullet, idx) => (
+            <li key={idx} className="flex items-start gap-2">
+              <span className="text-violet-400 mt-0.5">•</span>
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
       )}
     </motion.div>
   </motion.div>
@@ -157,6 +198,7 @@ const EducationExperience = () => {
                   title={item.title}
                   subtitle={item.institute}
                   duration={item.duration}
+                  bullets={item.bullets}
                   index={index}
                 />
               ))}
@@ -183,6 +225,7 @@ const EducationExperience = () => {
                   subtitle={item.company}
                   duration={item.duration}
                   details={item.details}
+                  bullets={item.bullets}
                   index={index}
                 />
               ))}

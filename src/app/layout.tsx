@@ -13,32 +13,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Suman's Portfolio",
+  title: "Suman Patra | Professional Frontend Engineer & React Developer",
   description:
-    "Explore Suman Patra's portfolio showcasing front-end development projects, React apps, and UI/UX designs. Specializing in Next.js, TypeScript, Bootstrap, and Tailwind CSS.",
+    "Portfolio of Suman Patra, a professional Frontend Engineer specializing in Next.js, React.js, TypeScript, and Tailwind CSS. Crafting interactive and high-performance user interfaces.",
   keywords: [
-    "Frontend Developer",
+    "Suman Patra",
+    "Suman Patra Portfolio",
+    "Frontend Engineer",
     "React Developer",
-    "Next.js Developer",
-    "TypeScript",
-    "UI/UX Design",
-    "Web Development",
-    "Tailwind CSS",
-    "Bootstrap",
-    "Portfolio",
+    "Next.js Specialist",
+    "TypeScript Developer",
+    "UI/UX Web Developer",
+    "Creative Web Interfaces",
+    "Portfolio Showcase",
   ].join(", "),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Suman Patra | Frontend Developer & React Expert",
+    title: "Suman Patra | Professional Frontend Engineer & React Specialist",
     description:
-      "Discover modern web designs, creative UI/UX projects, and impactful web apps by Suman Patra.",
+      "Discover modern web experiences, advanced React interfaces, and pixel-perfect applications crafted by Suman Patra.",
     url: "https://sumanprotfolio.vercel.app/",
-    siteName: "Suman's Portfolio",
+    siteName: "Suman Patra Portfolio",
     images: [
       {
         url: "/suman1.png",
         width: 1200,
         height: 630,
-        alt: "Suman Patra's Portfolio",
+        alt: "Suman Patra | Frontend Engineer",
       },
     ],
     type: "website",
@@ -46,9 +56,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@sumanpatra03",
-    title: "Suman's Portfolio | Frontend Developer",
+    title: "Suman Patra | Frontend Engineer Portfolio",
     description:
-      "Explore front-end development projects, React apps, and UI/UX designs by Suman Patra.",
+      "Explore high-performance React web applications and interactive frontend features built by Suman Patra.",
     images: ["/suman1.png"],
   },
   alternates: {

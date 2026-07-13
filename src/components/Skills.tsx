@@ -7,6 +7,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { FaReact, FaGitAlt, FaBootstrap } from "react-icons/fa";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { SiMui } from "react-icons/si";
+import { skillsSchema } from "@/utils/schemas";
 
 const skills = [
   { name: "C++", percentage: 40, color: "#A3E635", label: "for DSA" },
@@ -16,13 +17,55 @@ const skills = [
 ];
 
 const techStack = [
-  { name: "React JS", icon: <FaReact size={22} />, color: "border-teal-500/30 hover:border-teal-400 hover:shadow-[0_0_20px_rgba(20,184,166,0.3)] bg-teal-950/20 text-teal-400" },
-  { name: "Next.js", icon: <RiNextjsFill size={22} />, color: "border-blue-500/30 hover:border-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] bg-blue-950/20 text-blue-400" },
-  { name: "React Native", icon: <FaReact size={22} />, color: "border-indigo-500/30 hover:border-indigo-400 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] bg-indigo-950/20 text-indigo-400" },
-  { name: "Tailwind CSS", icon: <RiTailwindCssFill size={22} />, color: "border-violet-500/30 hover:border-violet-400 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] bg-violet-950/20 text-violet-400" },
-  { name: "MUI", icon: <SiMui size={20} />, color: "border-yellow-500/30 hover:border-yellow-400 hover:shadow-[0_0_20px_rgba(234,179,8,0.3)] bg-yellow-950/20 text-yellow-400" },
-  { name: "Bootstrap", icon: <FaBootstrap size={22} />, color: "border-pink-500/30 hover:border-pink-400 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] bg-pink-950/20 text-pink-400" },
-  { name: "Git", icon: <FaGitAlt size={22} />, color: "border-cyan-500/30 hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] bg-cyan-950/20 text-cyan-400" },
+  { 
+    name: "React JS", 
+    icon: <FaReact size={22} />, 
+    color: "border-teal-500/30 hover:border-teal-400 hover:shadow-[0_0_20px_rgba(20,184,166,0.3)] bg-teal-950/20 text-teal-400",
+    level: "Advanced",
+    progress: 85
+  },
+  { 
+    name: "Next.js", 
+    icon: <RiNextjsFill size={22} />, 
+    color: "border-blue-500/30 hover:border-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] bg-blue-950/20 text-blue-400",
+    level: "Advanced",
+    progress: 80
+  },
+  { 
+    name: "React Native", 
+    icon: <FaReact size={22} />, 
+    color: "border-indigo-500/30 hover:border-indigo-400 hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] bg-indigo-950/20 text-indigo-400",
+    level: "Intermediate",
+    progress: 65
+  },
+  { 
+    name: "Tailwind CSS", 
+    icon: <RiTailwindCssFill size={22} />, 
+    color: "border-violet-500/30 hover:border-violet-400 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] bg-violet-950/20 text-violet-400",
+    level: "Advanced",
+    progress: 90
+  },
+  { 
+    name: "MUI", 
+    icon: <SiMui size={20} />, 
+    color: "border-yellow-500/30 hover:border-yellow-400 hover:shadow-[0_0_20px_rgba(234,179,8,0.3)] bg-yellow-950/20 text-yellow-400",
+    level: "Advanced",
+    progress: 85
+  },
+  { 
+    name: "Bootstrap", 
+    icon: <FaBootstrap size={22} />, 
+    color: "border-pink-500/30 hover:border-pink-400 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] bg-pink-950/20 text-pink-400",
+    level: "Intermediate",
+    progress: 75
+  },
+  { 
+    name: "Git", 
+    icon: <FaGitAlt size={22} />, 
+    color: "border-cyan-500/30 hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] bg-cyan-950/20 text-cyan-400",
+    level: "Intermediate",
+    progress: 70
+  },
 ];
 
 const SkillProgress = ({ skill, index }: { skill: typeof skills[0]; index: number }) => {
@@ -44,7 +87,8 @@ const SkillProgress = ({ skill, index }: { skill: typeof skills[0]; index: numbe
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="flex flex-col items-center p-5 rounded-2xl bg-zinc-900/30 border border-zinc-800/80 hover:border-zinc-700/60 shadow-lg hover:shadow-xl transition-all duration-300"
+      whileHover={{ y: -4, boxShadow: "0 8px 30px rgba(139,92,246,0.15)" }}
+      className="flex flex-col items-center p-6 rounded-2xl bg-zinc-900/30 border border-zinc-800/80 hover:border-zinc-700/60 shadow-lg hover:shadow-xl transition-all duration-300"
     >
       <div className="w-24 h-24 md:w-28 md:h-28 relative">
         <CircularProgressbar
@@ -66,23 +110,6 @@ const SkillProgress = ({ skill, index }: { skill: typeof skills[0]; index: numbe
 };
 
 const SkillsSection = () => {
-  const skillsSchema = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOccupationalCredential",
-    name: "Web Development Skills",
-    competencyRequired: [
-      "C++ for DSA",
-      "JavaScript for Development",
-      "TypeScript for Web",
-      "JavaScript (OOPs) Concepts",
-    ],
-    credentialCategory: "Software Development",
-    provider: {
-      "@type": "Person",
-      name: "Suman Patra",
-    },
-  };
-
   return (
     <>
       <script
@@ -141,29 +168,42 @@ const SkillsSection = () => {
             />
           </div>
 
-          {/* Badges Flow Container */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-wrap gap-4 justify-center items-center"
-          >
+          {/* Badges Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {techStack.map((tech, index) => (
               <motion.div
                 key={tech.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                whileHover={{ y: -4, scale: 1.05 }}
-                className={`flex items-center gap-3 px-6 py-3 rounded-full border text-base sm:text-lg font-semibold cursor-default transition-all duration-300 ${tech.color}`}
+                whileHover={{ y: -4, scale: 1.02 }}
+                className={`p-4 rounded-xl border flex flex-col justify-between transition-all duration-300 shadow-md ${tech.color}`}
               >
-                {tech.icon}
-                {tech.name}
+                <div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-xl">{tech.icon}</span>
+                    <span className="text-sm font-bold text-zinc-200">{tech.name}</span>
+                  </div>
+                  <div className="mt-3 flex justify-between items-center text-[10px] text-zinc-400 uppercase tracking-widest font-semibold">
+                    <span>Proficiency</span>
+                    <span>{tech.level}</span>
+                  </div>
+                </div>
+
+                {/* Rating progress line */}
+                <div className="mt-2 w-full h-1.5 bg-zinc-950 rounded-full overflow-hidden border border-zinc-800/80">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${tech.progress}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    className="h-full bg-gradient-to-r from-violet-500 to-cyan-500 rounded-full"
+                  />
+                </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
     </>
